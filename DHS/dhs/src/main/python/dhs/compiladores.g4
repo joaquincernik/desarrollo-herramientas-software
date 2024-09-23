@@ -15,6 +15,14 @@ MULT : '*';
 DIV : '/';
 MOD : '%';  
 
+MAYOR : '>';
+MAYOREQ : '>=';
+MENOREQ : '<=';
+MENOR : '<';
+IGUAL : '==';
+AND : '&&';
+OR : '||';
+
 WHILE :'while';
 NUMERO : DIGITO+ ;
 INT:'int';
@@ -45,25 +53,36 @@ instrucciones : instruccion instrucciones //es una instruccion con mas instrucci
                 ;
 instruccion: declaracion
             | iwhile
+            //| ifor
             | bloque
-            | asignacion
+            | asignacion PYC
             ;
 
 declaracion: INT ID PYC ;
 
-asignacion: ID ASIG opal PYC;
+asignacion: ID ASIG opal ;
 
-opal: exp ; //completar una operacion aridmeticas, buscar en cppreference, agregamoss operaciones relacionales
+opal: comp;  //completar una operacion aridmeticas, buscar en cppreference, agregamoss operaciones relacionales
     
 
+c : MAYOR exp 
+  | MENOR exp 
+  | MENOREQ exp 
+  | MAYOREQ exp 
+  | IGUAL exp 
+  |
+  ;
+  
+comp: exp c;
 exp : term e ; //e es una expresion prima
+
+term : factor t; //t es termino prima, es una multiplicacion y viene un factor
 
 e : SUMA term e // a partir del segundo termino
   | RESTA term e
   | //regla vacia 
   ;
 
-term : factor t; //t es termino prima, es una multiplicacion y viene un factor
 
 t :   MULT factor t  //esto aplica jerarquia, multipliaciones se hacen antes, hacen que este por debajo en el arbol
     | DIV factor t
@@ -80,3 +99,4 @@ iwhile : WHILE PA ID PC instruccion ;//llave representa una instruccion compuest
 bloque : LLA instrucciones LLC; 
 
 //ifor : FOR PA init PYC cond PYC iter PC instruccion;
+
