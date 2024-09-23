@@ -29,6 +29,41 @@ class compiladoresVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by compiladoresParser#asignacion.
+    def visitAsignacion(self, ctx:compiladoresParser.AsignacionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#opal.
+    def visitOpal(self, ctx:compiladoresParser.OpalContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#exp.
+    def visitExp(self, ctx:compiladoresParser.ExpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#e.
+    def visitE(self, ctx:compiladoresParser.EContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#term.
+    def visitTerm(self, ctx:compiladoresParser.TermContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#t.
+    def visitT(self, ctx:compiladoresParser.TContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#factor.
+    def visitFactor(self, ctx:compiladoresParser.FactorContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by compiladoresParser#iwhile.
     def visitIwhile(self, ctx:compiladoresParser.IwhileContext):
         return self.visitChildren(ctx)
@@ -36,11 +71,6 @@ class compiladoresVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by compiladoresParser#bloque.
     def visitBloque(self, ctx:compiladoresParser.BloqueContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by compiladoresParser#ifor.
-    def visitIfor(self, ctx:compiladoresParser.IforContext):
         return self.visitChildren(ctx)
 
 

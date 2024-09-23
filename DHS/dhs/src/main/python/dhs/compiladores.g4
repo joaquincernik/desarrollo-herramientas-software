@@ -9,10 +9,17 @@ PC: ')';
 LLA: '{';
 LLC: '}';
 PYC: ';';
+SUMA : '+';
+RESTA : '-';
+MULT : '*';
+DIV : '/';
+MOD : '%';  
+
 WHILE :'while';
 NUMERO : DIGITO+ ;
 INT:'int';
 FOR: 'for';
+ASIG: '=';
 
 WS : [ \t\n\r] -> skip;
 ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
@@ -39,12 +46,37 @@ instrucciones : instruccion instrucciones //es una instruccion con mas instrucci
 instruccion: declaracion
             | iwhile
             | bloque
+            | asignacion
             ;
 
 declaracion: INT ID PYC ;
+
+asignacion: ID ASIG opal PYC;
+
+opal: exp ; //completar una operacion aridmeticas, buscar en cppreference, agregamoss operaciones relacionales
+    
+
+exp : term e ; //e es una expresion prima
+
+e : SUMA term e // a partir del segundo termino
+  | RESTA term e
+  | //regla vacia 
+  ;
+
+term : factor t; //t es termino prima, es una multiplicacion y viene un factor
+
+t :   MULT factor t  //esto aplica jerarquia, multipliaciones se hacen antes, hacen que este por debajo en el arbol
+    | DIV factor t
+    | MOD factor t
+    |
+    ;
+factor : NUMERO  //parentesis se convierte en factor
+      | ID
+      | PA exp PC
+      ;
 
 iwhile : WHILE PA ID PC instruccion ;//llave representa una instruccion compuesta, despues del while viene siempre una instruccion
 
 bloque : LLA instrucciones LLC; 
 
-ifor : FOR PA PYC PYC PC instruccion;
+//ifor : FOR PA init PYC cond PYC iter PC instruccion;
