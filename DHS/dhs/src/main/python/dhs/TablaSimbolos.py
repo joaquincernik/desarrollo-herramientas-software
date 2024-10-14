@@ -34,7 +34,16 @@ class TablaSimbolos(object):
             print('"'+nombre+'"'+" como id de variable esta facha facha, segui asi!\n")
 
         else:
-            print(nombre+" YA ESTA SIENDO USADO PA, BUSCATE OTRO!!!!\n")
+            print(nombre+" YA ESTA SIENDO USADO LOCALMENTE PA, BUSCATE OTRO!!!!\n")
+
+    
+    def buscarGlobal(self, nombre):
+
+        if (self.contextos[0].traerVariable(nombre))!=None:
+            print(nombre+" YA ESTA SIENDO USADO GLOBALMENTE PA, BUSCATE OTRO!!!!\n")
+            return 1
+        return 0
+    
 
 
     

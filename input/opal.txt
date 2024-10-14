@@ -1,7 +1,9 @@
+int p ;
+int z ;
 while(x){
-    int z ;
+    char z ;
+    char f ;
     int f ;
-    int z ;
     {
         int x;
         {

@@ -44,7 +44,10 @@ class Escucha (compiladoresListener) :
     def exitDeclaracion(self, ctx:compiladoresParser.DeclaracionContext):
         tipoDeDato= ctx.getChild(0).getText()
         nombreVariable= ctx.getChild(1).getText()
-        self.tablaDeSimbolos.buscarLocal(nombreVariable)
+
+        if(self.tablaDeSimbolos.buscarGlobal(nombreVariable)!=1):
+            self.tablaDeSimbolos.buscarLocal(nombreVariable)
+            
         self.tablaDeSimbolos.addIdentificador(nombreVariable,tipoDeDato)
 
 

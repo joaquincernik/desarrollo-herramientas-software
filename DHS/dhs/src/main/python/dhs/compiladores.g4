@@ -25,7 +25,15 @@ OR : '||';
 
 WHILE :'while';
 NUMERO : DIGITO+ ;
+
 INT:'int';
+CHAR:'char';
+FLOAT:'float';
+BOOLEAN:'bool';
+DOUBLE:'double';
+
+
+
 FOR: 'for';
 ASIG: '=';
 
@@ -58,7 +66,11 @@ instruccion: declaracion
             | asignacion PYC
             ;
 
-declaracion: INT ID PYC ;
+declaracion: INT ID PYC
+            | CHAR ID PYC
+            | DOUBLE ID PYC
+            | BOOLEAN ID PYC
+            | FLOAT ID PYC ;
 
 asignacion: ID ASIG opal ;
 
