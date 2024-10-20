@@ -76,16 +76,16 @@ asignacion: ID ASIG opal ;
 
 opal: comp;  //completar una operacion aridmeticas, buscar en cppreference, agregamoss operaciones relacionales
     
+comp: exp c;
 
-c : MAYOR exp 
-  | MENOR exp 
-  | MENOREQ exp 
-  | MAYOREQ exp 
-  | IGUAL exp 
+c : MAYOR exp c
+  | MENOR exp c
+  | MENOREQ exp c
+  | MAYOREQ exp c
+  | IGUAL exp c
   |
   ;
   
-comp: exp c;
 exp : term e ; //e es una expresion prima
 
 term : factor t; //t es termino prima, es una multiplicacion y viene un factor

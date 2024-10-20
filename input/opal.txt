@@ -1,14 +1,1 @@
-int p ;
-int z ;
-while(x){
-    char z ;
-    char f ;
-    int f ;
-    {
-        int x;
-        {
-            int j;
-        }
-    }
-
-}
+x = 3 * 9 + 6 * 8 > 7 * 7  ;
