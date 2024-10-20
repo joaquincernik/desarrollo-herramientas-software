@@ -62,6 +62,42 @@ class compiladoresListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by compiladoresParser#or.
+    def enterOr(self, ctx:compiladoresParser.OrContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#or.
+    def exitOr(self, ctx:compiladoresParser.OrContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#o.
+    def enterO(self, ctx:compiladoresParser.OContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#o.
+    def exitO(self, ctx:compiladoresParser.OContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#and.
+    def enterAnd(self, ctx:compiladoresParser.AndContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#and.
+    def exitAnd(self, ctx:compiladoresParser.AndContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#a.
+    def enterA(self, ctx:compiladoresParser.AContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#a.
+    def exitA(self, ctx:compiladoresParser.AContext):
+        pass
+
+
     # Enter a parse tree produced by compiladoresParser#comp.
     def enterComp(self, ctx:compiladoresParser.CompContext):
         pass

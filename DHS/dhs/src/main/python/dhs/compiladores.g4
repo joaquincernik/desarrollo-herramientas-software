@@ -74,8 +74,20 @@ declaracion: INT ID PYC
 
 asignacion: ID ASIG opal ;
 
-opal: comp;  //completar una operacion aridmeticas, buscar en cppreference, agregamoss operaciones relacionales
-    
+opal: or;  //completar una operacion aridmeticas, buscar en cppreference, agregamoss operaciones relacionales
+
+or : and o ;
+
+o : OR and o 
+    |
+    ;
+
+and : comp a ;
+
+a : AND comp a 
+   |
+   ;
+
 comp: exp c;
 
 c : MAYOR exp c
@@ -103,7 +115,7 @@ t :   MULT factor t  //esto aplica jerarquia, multipliaciones se hacen antes, ha
     ;
 factor : NUMERO  //parentesis se convierte en factor
       | ID
-      | PA exp PC
+      | PA or PC
       ;
 
 iwhile : WHILE PA ID PC instruccion ;//llave representa una instruccion compuesta, despues del while viene siempre una instruccion
