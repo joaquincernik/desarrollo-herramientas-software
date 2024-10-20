@@ -179,5 +179,77 @@ class compiladoresListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by compiladoresParser#ifor.
+    def enterIfor(self, ctx:compiladoresParser.IforContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#ifor.
+    def exitIfor(self, ctx:compiladoresParser.IforContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#init.
+    def enterInit(self, ctx:compiladoresParser.InitContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#init.
+    def exitInit(self, ctx:compiladoresParser.InitContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#cond.
+    def enterCond(self, ctx:compiladoresParser.CondContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#cond.
+    def exitCond(self, ctx:compiladoresParser.CondContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#iter.
+    def enterIter(self, ctx:compiladoresParser.IterContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#iter.
+    def exitIter(self, ctx:compiladoresParser.IterContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#incremento.
+    def enterIncremento(self, ctx:compiladoresParser.IncrementoContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#incremento.
+    def exitIncremento(self, ctx:compiladoresParser.IncrementoContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#decremento.
+    def enterDecremento(self, ctx:compiladoresParser.DecrementoContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#decremento.
+    def exitDecremento(self, ctx:compiladoresParser.DecrementoContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#preincremento.
+    def enterPreincremento(self, ctx:compiladoresParser.PreincrementoContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#preincremento.
+    def exitPreincremento(self, ctx:compiladoresParser.PreincrementoContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#predecremento.
+    def enterPredecremento(self, ctx:compiladoresParser.PredecrementoContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#predecremento.
+    def exitPredecremento(self, ctx:compiladoresParser.PredecrementoContext):
+        pass
+
+
 
 del compiladoresParser

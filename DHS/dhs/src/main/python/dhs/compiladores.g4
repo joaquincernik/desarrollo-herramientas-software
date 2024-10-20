@@ -13,7 +13,9 @@ SUMA : '+';
 RESTA : '-';
 MULT : '*';
 DIV : '/';
-MOD : '%';  
+MOD : '%'; 
+INCR : '++';
+DECR : '--' ; 
 
 MAYOR : '>';
 MAYOREQ : '>=';
@@ -61,7 +63,7 @@ instrucciones : instruccion instrucciones //es una instruccion con mas instrucci
                 ;
 instruccion: declaracion
             | iwhile
-            //| ifor
+            | ifor
             | bloque
             | asignacion PYC
             ;
@@ -122,5 +124,22 @@ iwhile : WHILE PA ID PC instruccion ;//llave representa una instruccion compuest
 
 bloque : LLA instrucciones LLC; 
 
-//ifor : FOR PA init PYC cond PYC iter PC instruccion;
+//for :
+ifor : FOR PA init PYC cond PYC iter PC instruccion;
+init : ID ASIG NUMERO ;
+cond : comp;
+iter : asignacion
+      | incremento
+      | decremento 
+      | preincremento
+      | predecremento
+      ;
+incremento : ID INCR ;
+decremento : ID DECR ;
+preincremento : INCR ID ;
+predecremento : DECR ID ;
+
+
+
+
 
