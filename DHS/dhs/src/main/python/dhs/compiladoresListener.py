@@ -251,5 +251,23 @@ class compiladoresListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by compiladoresParser#if.
+    def enterIf(self, ctx:compiladoresParser.IfContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#if.
+    def exitIf(self, ctx:compiladoresParser.IfContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#else.
+    def enterElse(self, ctx:compiladoresParser.ElseContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#else.
+    def exitElse(self, ctx:compiladoresParser.ElseContext):
+        pass
+
+
 
 del compiladoresParser

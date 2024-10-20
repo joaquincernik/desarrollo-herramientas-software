@@ -25,9 +25,11 @@ FLOAT=24
 BOOLEAN=25
 DOUBLE=26
 FOR=27
-ASIG=28
-WS=29
-ID=30
+IF=28
+ELSE=29
+ASIG=30
+WS=31
+ID=32
 '('=1
 ')'=2
 '{'=3
@@ -54,4 +56,6 @@ ID=30
 'bool'=25
 'double'=26
 'for'=27
-'='=28
+'if'=28
+'else'=29
+'='=30

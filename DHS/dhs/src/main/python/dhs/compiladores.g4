@@ -37,6 +37,8 @@ DOUBLE:'double';
 
 
 FOR: 'for';
+IF: 'if' ;
+ELSE: 'else' ;
 ASIG: '=';
 
 WS : [ \t\n\r] -> skip;
@@ -64,6 +66,8 @@ instrucciones : instruccion instrucciones //es una instruccion con mas instrucci
 instruccion: declaracion
             | iwhile
             | ifor
+            | if
+            | else
             | bloque
             | asignacion PYC
             ;
@@ -127,7 +131,7 @@ bloque : LLA instrucciones LLC;
 //for :
 ifor : FOR PA init PYC cond PYC iter PC instruccion;
 init : ID ASIG NUMERO ;
-cond : comp;
+cond : opal;
 iter : asignacion
       | incremento
       | decremento 
@@ -138,8 +142,11 @@ incremento : ID INCR ;
 decremento : ID DECR ;
 preincremento : INCR ID ;
 predecremento : DECR ID ;
+//fin for
 
-
+//if
+if : IF PA opal PC instruccion ;
+else : ELSE instruccion ;
 
 
 

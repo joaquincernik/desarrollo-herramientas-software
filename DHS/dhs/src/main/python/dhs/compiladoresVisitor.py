@@ -144,5 +144,15 @@ class compiladoresVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by compiladoresParser#if.
+    def visitIf(self, ctx:compiladoresParser.IfContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#else.
+    def visitElse(self, ctx:compiladoresParser.ElseContext):
+        return self.visitChildren(ctx)
+
+
 
 del compiladoresParser
