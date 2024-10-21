@@ -33,6 +33,7 @@ CHAR:'char';
 FLOAT:'float';
 BOOLEAN:'bool';
 DOUBLE:'double';
+VOID:'void';
 
 
 
@@ -40,6 +41,8 @@ FOR: 'for';
 IF: 'if' ;
 ELSE: 'else' ;
 ASIG: '=';
+COMA: ',';
+
 
 WS : [ \t\n\r] -> skip;
 ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
@@ -58,6 +61,16 @@ s : ID     {print("ID ->" + $ID.text + "<--") }         s
   //|
 //;
 
+
+tipodato: INT
+        | DOUBLE
+        | CHAR
+        | BOOLEAN
+        | FLOAT
+        ;
+tipodatofunc : tipodato
+        | VOID ;
+
 programa : instrucciones EOF ; //secuencia de instrucciones hasta el final del archivo
 
 instrucciones : instruccion instrucciones //es una instruccion con mas instrucciones 
@@ -72,12 +85,10 @@ instruccion: declaracion
             | asignacion PYC
             ;
 
-declaracion: INT ID PYC
-            | CHAR ID PYC
-            | DOUBLE ID PYC
-            | BOOLEAN ID PYC
-            | FLOAT ID PYC ;
+declaracion: tipodato ID PYC ;
 
+
+//asignacion-----------------------------------------------------------------------
 asignacion: ID ASIG opal ;
 
 opal: or;  //completar una operacion aridmeticas, buscar en cppreference, agregamoss operaciones relacionales
@@ -121,8 +132,11 @@ t :   MULT factor t  //esto aplica jerarquia, multipliaciones se hacen antes, ha
     ;
 factor : NUMERO  //parentesis se convierte en factor
       | ID
-      | PA or PC
+      | PA opal PC
       ;
+
+//fin asignacion------------------------------------------------------------------------------------
+
 
 iwhile : WHILE PA ID PC instruccion ;//llave representa una instruccion compuesta, despues del while viene siempre una instruccion
 
@@ -130,18 +144,13 @@ bloque : LLA instrucciones LLC;
 
 //for :
 ifor : FOR PA init PYC cond PYC iter PC instruccion;
-init : ID ASIG NUMERO ;
+init : asignacion ;
 cond : opal;
-iter : asignacion
-      | incremento
-      | decremento 
-      | preincremento
-      | predecremento
-      ;
-incremento : ID INCR ;
+iter : asignacion;
+/*incremento : ID INCR ;
 decremento : ID DECR ;
 preincremento : INCR ID ;
-predecremento : DECR ID ;
+predecremento : DECR ID ;*/
 //fin for
 
 //if
@@ -149,4 +158,13 @@ if : IF PA opal PC instruccion ;
 else : ELSE instruccion ;
 
 
+//prototipo de funciones---------------------------------------------------------------
+prototipo : tipodatofunc ID PA arg PC PYC;
+arg : ID
+    | asignacion
+    | asignacion COMA arg
+    |
+    ;
 
+//funcion-----------------------------------------------------------------------------
+funcion : prototipo bloque ;

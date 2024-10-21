@@ -51,6 +51,13 @@ class Escucha (compiladoresListener) :
         self.tablaDeSimbolos.addIdentificador(nombreVariable,tipoDeDato)
 
 
+
+    def enterAsignacion(self, ctx: compiladoresParser.AsignacionContext):
+        print(" ### ASIGNACION ###")
+
+    def exitAsignacion(self, ctx: compiladoresParser.AsignacionContext):
+        print("HOLA TERMINE DE ASIGNAR LA VARIABLE")
+
 #para saber si estoy en una hoja
     def visitTerminal(self, node: TerminalNode):
         self.numTokensTotal+=1 
@@ -95,9 +102,6 @@ class Escucha (compiladoresListener) :
         #tokens son las hojas
         print('\tTokens: '+ str(self.numTokensTotal))
         #print("Cantidad de contextos encontrados en esta tabla de simbolos: "+self.tablaDeSimbolos.nombre)
-
-    
-
 
 
 

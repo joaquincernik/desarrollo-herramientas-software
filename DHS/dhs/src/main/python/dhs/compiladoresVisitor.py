@@ -9,6 +9,16 @@ else:
 
 class compiladoresVisitor(ParseTreeVisitor):
 
+    # Visit a parse tree produced by compiladoresParser#tipodato.
+    def visitTipodato(self, ctx:compiladoresParser.TipodatoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#tipodatofunc.
+    def visitTipodatofunc(self, ctx:compiladoresParser.TipodatofuncContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by compiladoresParser#programa.
     def visitPrograma(self, ctx:compiladoresParser.ProgramaContext):
         return self.visitChildren(ctx)
@@ -124,26 +134,6 @@ class compiladoresVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by compiladoresParser#incremento.
-    def visitIncremento(self, ctx:compiladoresParser.IncrementoContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by compiladoresParser#decremento.
-    def visitDecremento(self, ctx:compiladoresParser.DecrementoContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by compiladoresParser#preincremento.
-    def visitPreincremento(self, ctx:compiladoresParser.PreincrementoContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by compiladoresParser#predecremento.
-    def visitPredecremento(self, ctx:compiladoresParser.PredecrementoContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by compiladoresParser#if.
     def visitIf(self, ctx:compiladoresParser.IfContext):
         return self.visitChildren(ctx)
@@ -151,6 +141,21 @@ class compiladoresVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by compiladoresParser#else.
     def visitElse(self, ctx:compiladoresParser.ElseContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#prototipo.
+    def visitPrototipo(self, ctx:compiladoresParser.PrototipoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#arg.
+    def visitArg(self, ctx:compiladoresParser.ArgContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#funcion.
+    def visitFuncion(self, ctx:compiladoresParser.FuncionContext):
         return self.visitChildren(ctx)
 
 
