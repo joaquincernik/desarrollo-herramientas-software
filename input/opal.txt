@@ -1,4 +1,8 @@
-for(int i = 0 ; i < 10 ; i ++){
+int w ;
+while(r){
     int x ;
-    x = 8 ;
+    x = 9 ;
+    w = 98 ;
+    int b ;
+    b = 78 ;
 }

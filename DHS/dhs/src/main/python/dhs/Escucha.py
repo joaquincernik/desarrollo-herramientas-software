@@ -44,11 +44,24 @@ class Escucha (compiladoresListener) :
     def exitDeclaracion(self, ctx:compiladoresParser.DeclaracionContext):
         tipoDeDato= ctx.getChild(0).getText()
         nombreVariable= ctx.getChild(1).getText()
+        
+        #Las busquedas si devuelven 1 es porque encontraron algo
+        busquedaGlobal = self.tablaDeSimbolos.buscarGlobal(nombreVariable)
+        busquedaLocal = self.tablaDeSimbolos.buscarLocal(nombreVariable)
+       
+        if busquedaGlobal == 1 and busquedaLocal == 1 :
+            print('"'+nombreVariable+'"'+" como id de variable esta facha facha, segui asi!\n")
+            self.tablaDeSimbolos.addIdentificador(nombreVariable,tipoDeDato)
+        
+        else : 
+            if busquedaGlobal != 1 :
+                print('ERROR: "' + nombreVariable +'" YA ESTA USADO GLOBALMENTE PA! BUSCATE OTRO \n')
 
-        if(self.tablaDeSimbolos.buscarGlobal(nombreVariable)!=1):
-            self.tablaDeSimbolos.buscarLocal(nombreVariable)
+            else:
+                print('ERROR: "' + nombreVariable +'" YA ESTA USADO LOCALENTE PA! BUSCATE OTRO \n')
+
+
             
-        self.tablaDeSimbolos.addIdentificador(nombreVariable,tipoDeDato)
 
 
 
@@ -56,7 +69,27 @@ class Escucha (compiladoresListener) :
         print(" ### ASIGNACION ###")
 
     def exitAsignacion(self, ctx: compiladoresParser.AsignacionContext):
-        print("HOLA TERMINE DE ASIGNAR LA VARIABLE")
+        nombreVariable= ctx.getChild(0).getText()
+        busquedaGlobal = self.tablaDeSimbolos.buscarGlobal(nombreVariable)
+
+        
+        #buscamos si la variable fue declarada globalmente
+        if busquedaGlobal == 1 :
+
+            #no la encontro entonces la busco localmente
+            busquedaLocal = self.tablaDeSimbolos.buscarLocal(nombreVariable)
+
+            if busquedaLocal == 1 :
+                #entonces no la encontro en ningun lado
+                print("ERROR: Loco no se que es " + nombreVariable + " tenes que declararla primero !\n")
+            else :
+                busquedaLocal.inicializado = 1
+
+        else :
+            #la encontro en el contexto global 
+            busquedaGlobal.inicializado = 1
+        
+
 
 #para saber si estoy en una hoja
     def visitTerminal(self, node: TerminalNode):
@@ -85,8 +118,8 @@ class Escucha (compiladoresListener) :
     # Exit a parse tree produced by compiladoresParser#bloque.
     def exitBloque(self, ctx:compiladoresParser.BloqueContext):
         print('***Sali de un CONTEXTO***')
-        print('Cantidad de hijos: '+ str(ctx.getChildCount()))
-        print('TOQUENS: '+ ctx.getText())
+        #print('Cantidad de hijos: '+ str(ctx.getChildCount()))
+        #print('TOQUENS: '+ ctx.getText())
 
         print("En este contexto se encontro lo siguiente:")
         self.tablaDeSimbolos.contextos[-1].imprimirTabla()
@@ -96,11 +129,16 @@ class Escucha (compiladoresListener) :
     
     # Exit a parse tree produced by compiladoresParser#programa.
     def exitPrograma(self, ctx:compiladoresParser.ProgramaContext):
+        #
         print('Fin compilacion\n')
-        print('Se encontraron: ')
-        print('Nodos: '+ str(self.numNodosTotal))
+        print("En el contexto global se encontro lo siguiente:")
+        self.tablaDeSimbolos.contextos[-1].imprimirTabla()
+        print("********************************************\n")
+        
+        #print('Se encontraron: ')
+        #print('Nodos: '+ str(self.numNodosTotal))
         #tokens son las hojas
-        print('\tTokens: '+ str(self.numTokensTotal))
+        #print('\tTokens: '+ str(self.numTokensTotal))
         #print("Cantidad de contextos encontrados en esta tabla de simbolos: "+self.tablaDeSimbolos.nombre)
 
 

@@ -17,32 +17,34 @@ class TablaSimbolos(object):
 
     def addContexto(self,contexto):
         self.contextos.append(contexto) 
-        print("largo de la lista de contextos: "+str(len(self.contextos)))
 
     def delContexto(self):
         self.contextos.pop()
 
     def addIdentificador(self,nombre,tipoDato):
         contexto=self.contextos[-1]
-        id = ID(nombre,tipoDato,1,1)
+        id = ID(nombre,tipoDato,0,0)
         contexto.tabla.update({nombre:id})
         print("SE ANADIO UN IDENTIFICADOR")
 
-    def buscarLocal(self, nombre):
 
-        if (self.contextos[-1].traerVariable(nombre))==None:
-            print('"'+nombre+'"'+" como id de variable esta facha facha, segui asi!\n")
+    def buscarLocal(self, nombre):
+        resultadoBusqueda = self.contextos[-1].traerVariable(nombre)
+        if (resultadoBusqueda) == None:
+            return 1
 
         else:
-            print(nombre+" YA ESTA SIENDO USADO LOCALMENTE PA, BUSCATE OTRO!!!!\n")
+            return resultadoBusqueda
+
 
     
     def buscarGlobal(self, nombre):
-
-        if (self.contextos[0].traerVariable(nombre))!=None:
-            print(nombre+" YA ESTA SIENDO USADO GLOBALMENTE PA, BUSCATE OTRO!!!!\n")
+        resultadoBusqueda = self.contextos[0].traerVariable(nombre)
+        if (resultadoBusqueda) == None:
             return 1
-        return 0
+        
+        else :
+            return resultadoBusqueda
     
 
 

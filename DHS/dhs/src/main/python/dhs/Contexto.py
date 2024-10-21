@@ -5,7 +5,7 @@ class Contexto():
 
     def traerVariable(self,nombre):
          if nombre in self.tabla:
-              return nombre
+              return self.tabla[nombre]
          
          else:
               return None
