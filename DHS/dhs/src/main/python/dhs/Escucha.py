@@ -83,10 +83,12 @@ class Escucha (compiladoresListener) :
                 #entonces no la encontro en ningun lado
                 print("ERROR: Loco no se que es " + nombreVariable + " tenes que declararla primero !\n")
             else :
+                print("Se inicializo la variable '" + nombreVariable +"'")
                 busquedaLocal.inicializado = 1
 
         else :
             #la encontro en el contexto global 
+            print("Se inicializo la variable '" + nombreVariable +"'")
             busquedaGlobal.inicializado = 1
         
 
